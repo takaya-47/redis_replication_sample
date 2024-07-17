@@ -1,0 +1,3 @@
+# redis_replication_sample
+master1台、replica1台で構成されたRedisのレプリケーション機能をDocker Composeで使用して構築した。
+ネイティブのRedisは自動フェイルオーバーの機能がないため、手動でreplicaをmasterに切り替える必要がある。

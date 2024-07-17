@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis-master:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis-master.conf:/usr/local/etc/redis/redis-master.conf
+    command: redis-server /usr/local/etc/redis/redis-master.conf # サーバー起動時に設定ファイルを読み込むためのコマンド
+  redis-replica:
+    image: redis:latest
+    ports:
+      - 6380:6379
+    volumes:
+      - ./redis-replica.conf:/usr/local/etc/redis/redis-replica.conf
+    command: redis-server /usr/local/etc/redis/redis-replica.conf

@@ -1,3 +1,9 @@
 # redis_replication_sample
 master1台、replica1台で構成されたRedisのレプリケーション機能をDocker Composeで使用して構築した。
+
+docker-compose upで起動して起動ログを確認できる。（dオプションは不要）
+
 ネイティブのRedisは自動フェイルオーバーの機能がないため、手動でreplicaをmasterに切り替える必要がある。
+
+終わったらdocker-compose downでコンテナとネットワークを削除しておく。
+その後、イメージも削除してしまってOK。

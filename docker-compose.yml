@@ -8,6 +8,8 @@ services:
     volumes:
       - ./redis-master.conf:/usr/local/etc/redis/redis-master.conf # バインドマウント
     command: redis-server /usr/local/etc/redis/redis-master.conf # サーバー起動時に設定ファイルを読み込むためのコマンド
+    expose:
+      - 6379
   redis-replica:
     image: redis:latest
     ports:
@@ -15,3 +17,5 @@ services:
     volumes:
       - ./redis-replica.conf:/usr/local/etc/redis/redis-replica.conf
     command: redis-server /usr/local/etc/redis/redis-replica.conf
+    expose:
+      - 6379

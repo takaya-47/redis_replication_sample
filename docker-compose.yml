@@ -1,21 +1,21 @@
-# version: '3' # 警告が出るのでコメントアウト
+# うまくいかないので、dockerfile作ってpidファイルがなかったら作りつつ、write権限つける感じにする。
+# その上でyamlを編集する
 
 services:
   redis-master:
-    image: redis:latest
+    build:
+      context: .
+      dockerfile: docker/redis-master.Dockerfile
     ports:
       - 6379:6379
-    volumes:
-      - ./redis-master.conf:/usr/local/etc/redis/redis-master.conf # バインドマウント
-    command: redis-server /usr/local/etc/redis/redis-master.conf # サーバー起動時に設定ファイルを読み込むためのコマンド
     expose:
       - 6379
+
   redis-replica:
-    image: redis:latest
+    build:
+      context: .
+      dockerfile: docker/redis-replica.Dockerfile
     ports:
       - 6380:6379
-    volumes:
-      - ./redis-replica.conf:/usr/local/etc/redis/redis-replica.conf
-    command: redis-server /usr/local/etc/redis/redis-replica.conf
     expose:
       - 6379
